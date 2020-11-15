@@ -1,0 +1,19 @@
+.title {
+  letter-spacing: 0px;
+  font-family: freight-display-pro, serif;
+  text-transform: none;
+  color: #2b2e2b;
+  margin-bottom: 2rem;
+}
+
+.text {
+  font-size: 1rem;
+  letter-spacing: 0.03px;
+  text-transform: none;
+  color: #2b2e2b;
+  margin-bottom: 36px;
+
+  @include breakpoint(tablet-portrait-up) {
+    font-size: 2rem;
+  }
+}

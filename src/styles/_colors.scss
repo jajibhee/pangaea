@@ -1,0 +1,12 @@
+$color: (
+  text: #2b2e2b,
+  btn: #4b5548,
+  input: #4b5548,
+  accent: #e2e6e3,
+);
+
+//map through the colors
+
+@function color($colorName) {
+  @return map-get($map: $color, $key: $colorName);
+}
