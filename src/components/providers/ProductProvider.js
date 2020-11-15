@@ -5,7 +5,7 @@ const ProductProvider = (props) => {
   const [cart, setCart] = useState(false);
 
   const toggleCart = () => {
-    setCart(true);
+    setCart(!cart);
   };
 
   const contextValues = {

@@ -7,7 +7,7 @@ import Cart from "../../components/Cart/Cart";
 import ProductContext from "../../components/contexts/ProductContext";
 
 const Products = () => {
-  const { cart } = useContext(ProductContext);
+  const { cart, toggleCart } = useContext(ProductContext);
   return (
     <Query
       query={gql`
@@ -33,7 +33,7 @@ const Products = () => {
       {({ loading, error, data }) => {
         return (
           <div>
-            <Cart open={cart} />
+            <Cart open={cart} toggleCart={toggleCart} />
 
             <section className="products">
               <div className="products-header">
