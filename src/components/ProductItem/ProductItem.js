@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "../common/Button";
 import Text from "../common/Text";
+import ProductContext from "../contexts/ProductContext";
 
-const ProductItem = ({ toggleCart }) => {
+const ProductItem = () => {
+  const { toggleCart } = useContext(ProductContext);
+
   return (
     <div className="product-item">
       <div className="product-item__image">
