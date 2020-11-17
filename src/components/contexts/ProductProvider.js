@@ -93,13 +93,6 @@ const ProductProvider = (props) => {
           });
         };
 
-        const updateCurrency = (curr) => {
-          dispatch({
-            type: UPDATE_CURRENCY,
-            payload: curr,
-          });
-        };
-
         const contextValues = {
           cart,
           toggleCart,
