@@ -1,5 +1,5 @@
-const updateTotal = (items) => {
-  return items.reduce((acc, curr) => acc + curr.price, 0);
+export const updateTotal = (items) => {
+  return items.reduce((acc, curr) => acc + curr.total, 0);
 };
 
 export const addToCart = (state, item) => {

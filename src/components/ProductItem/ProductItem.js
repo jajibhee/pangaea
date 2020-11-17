@@ -6,7 +6,6 @@ import ProductContext from "../contexts/ProductContext";
 const ProductItem = ({ product }) => {
   const { currentCurrency, addToCart } = useContext(ProductContext);
 
-  console.log(product);
   return (
     <div className="product-item">
       <div className="product-item__image">
