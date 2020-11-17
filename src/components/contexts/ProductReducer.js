@@ -1,10 +1,15 @@
-import { addToCart, decreaseInCart, increaseInCart } from "../helpers/helpers";
 import {
-  CLEAR_CART,
+  addToCart,
+  decreaseInCart,
+  increaseInCart,
+  updateCurrency,
+} from "../helpers/helpers";
+import {
   ADD_PRODUCT_TO_CART,
   INCREASE_PRODUCT_QUANTITY_IN_CART,
   DECREASE_PRODUCT_QUANTITY_IN_CART,
   REMOVE_PRODUCT_FROM_CART,
+  UPDATE_CURRENCY,
 } from "./types";
 
 // eslint-disable-next-line
@@ -27,11 +32,9 @@ export default (state, action) => {
     case DECREASE_PRODUCT_QUANTITY_IN_CART:
       return decreaseInCart({ ...state }, action.payload);
 
-    case CLEAR_CART:
-      return {
-        ...state,
-        cartItems: [],
-      };
+    case UPDATE_CURRENCY:
+      return updateCurrency({ ...state }, action.payload);
+
     default:
       return state;
   }

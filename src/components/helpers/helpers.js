@@ -52,3 +52,18 @@ export const decreaseInCart = (state, item) => {
 
   return state;
 };
+
+export const updateCurrency = (state, products) => {
+  const cartItems = state.cartItems.map((cartItem) => {
+    const sourceProduct = products.find(
+      (product) => product.id === cartItem.id
+    );
+    cartItem.price = sourceProduct.price;
+    cartItem.total = cartItem.quantity * sourceProduct.price;
+
+    return cartItem;
+  });
+  state.cartItems = cartItems;
+  state.total = updateTotal(cartItems);
+  return state;
+};

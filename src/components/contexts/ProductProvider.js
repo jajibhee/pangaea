@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useReducer } from "react";
+import React, { Fragment, useState, useReducer, useEffect } from "react";
 import ProductContext from "./ProductContext";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
@@ -8,6 +8,7 @@ import {
   INCREASE_PRODUCT_QUANTITY_IN_CART,
   DECREASE_PRODUCT_QUANTITY_IN_CART,
   REMOVE_PRODUCT_FROM_CART,
+  UPDATE_CURRENCY,
 } from "./types";
 
 const ProductProvider = (props) => {
@@ -23,6 +24,13 @@ const ProductProvider = (props) => {
   const [currency, setCurrency] = useState("");
   const [currentCurrency, setCurrentCurrency] = useState("USD");
   const [products, setProducts] = useState("");
+
+  useEffect(() => {
+    dispatch({
+      type: UPDATE_CURRENCY,
+      payload: products,
+    });
+  }, [products]);
 
   return (
     <Query
@@ -82,6 +90,13 @@ const ProductProvider = (props) => {
           dispatch({
             type: REMOVE_PRODUCT_FROM_CART,
             payload: item,
+          });
+        };
+
+        const updateCurrency = (curr) => {
+          dispatch({
+            type: UPDATE_CURRENCY,
+            payload: curr,
           });
         };
 
