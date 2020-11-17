@@ -18,9 +18,10 @@ const ProductProvider = (props) => {
 
   const [state, dispatch] = useReducer(ProductReducer, initialState);
 
+  // TODO ; Add change currency to reducer to trigger state change.
   const [cart, setCart] = useState(false);
   const [currency, setCurrency] = useState("");
-  const [currentCurrency, setCurrentCurrency] = useState("ALL");
+  const [currentCurrency, setCurrentCurrency] = useState("USD");
   const [products, setProducts] = useState("");
 
   return (

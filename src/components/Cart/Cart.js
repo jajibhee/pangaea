@@ -33,11 +33,13 @@ const Cart = ({ open, toggleCart }) => {
             ? currency.map((curr) => <option value={curr}>{curr}</option>)
             : ""}
         </select>
-        {cartItems.length >= 1
-          ? cartItems.map((cartItem) => (
-              <CartItem key={cartItem.id} item={cartItem} />
-            ))
-          : "Empty Cart"}
+        <div className="cart-section">
+          {cartItems.length >= 1
+            ? cartItems.map((cartItem) => (
+                <CartItem key={cartItem.id} item={cartItem} />
+              ))
+            : "Empty Cart"}
+        </div>
 
         <div className="cart-footer">
           <p>Subtotal</p>
