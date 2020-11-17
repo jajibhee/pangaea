@@ -1,5 +1,5 @@
 .products {
-  // background: #000;
+  position: relative;
 
   &-header {
     display: flex;
@@ -11,10 +11,20 @@
 }
 
 .product-section {
-  padding: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   background-color: #e2e6e3;
-  display: flex;
-  flex-wrap: wrap;
+  padding: 25px;
+  grid-gap: 5rem;
+
+  @include breakpoint(desktop-up) {
+    padding: 25px;
+    background-color: #e2e6e3;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }
 
 .product-item {
@@ -27,12 +37,15 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 3rem;
-
+    max-height: 10rem;
     & img {
       width: 100%;
       padding: 0 15px;
-      max-height: 180px;
+      max-height: 100px;
       object-fit: contain;
+      @include breakpoint(desktop-up) {
+        max-height: 180px;
+      }
     }
   }
   &__title {

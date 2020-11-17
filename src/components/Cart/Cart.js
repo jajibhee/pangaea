@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import CartItem from "./CartItem/CartItem";
 import { FiChevronLeft } from "react-icons/fi";
 import Text from "../common/Text";
+import ProductContext from "../contexts/ProductContext";
 
 const Cart = ({ open, toggleCart }) => {
+  const {
+    cartItems,
+    setCurrentCurrency,
+    currency,
+    currentCurrency,
+    total,
+  } = useContext(ProductContext);
+
   return (
     <div>
       <div className={open ? "overlay" : ""}></div>
@@ -14,14 +23,31 @@ const Cart = ({ open, toggleCart }) => {
           </div>
           <Text>Your Cart</Text>
         </div>
-        <select className="currency-select">
-          <option value="usd" style={{ display: "none" }}>
-            USD
-          </option>
-          <option value="usd">USD</option>
+        <select
+          className="currency-select"
+          name="currentCurrency"
+          value={currentCurrency}
+          onChange={(e) => setCurrentCurrency(e.target.value)}
+        >
+          {currency
+            ? currency.map((curr) => <option value={curr}>{curr}</option>)
+            : ""}
         </select>
+        {cartItems.length >= 1
+          ? cartItems.map((cartItem) => (
+              <CartItem key={cartItem.id} item={cartItem} />
+            ))
+          : "Empty Cart"}
 
-        <CartItem />
+        <div className="cart-footer">
+          <p>Subtotal</p>
+          <p>
+            {new Intl.NumberFormat(`${currentCurrency}`, {
+              style: "currency",
+              currency: `${currentCurrency}`,
+            }).format(total)}
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import "./styles/app.scss";
 import Products from "./pages/Products/Products";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
-import ProductProvider from "./components/providers/ProductProvider";
+import ProductProvider from "./components/contexts/ProductProvider";
 
 function App() {
   const client = new ApolloClient({

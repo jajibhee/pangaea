@@ -22,6 +22,10 @@
     grid-template-columns: 1fr 1fr;
     align-items: center;
   }
+  &-footer {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .open {
@@ -33,6 +37,7 @@
 .cart-item {
   padding: 1rem;
   background-color: color(white);
+  margin: 1rem 0;
 
   &__title {
     display: flex;

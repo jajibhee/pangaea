@@ -1,25 +1,42 @@
-import React from "react";
-import { FiPlusSquare, FiMinusSquare, FiX } from "react-icons/fi";
+import React, { useContext } from "react";
+import { FiX } from "react-icons/fi";
+import ProductContext from "../../contexts/ProductContext";
 
-const CartItem = () => {
+const CartItem = ({ item }) => {
+  const {
+    currentCurrency,
+    increaseQuantity,
+    decreaseQuantity,
+    removeItem,
+  } = useContext(ProductContext);
+
   return (
     <div className="cart-item">
       <div className="cart-item__title">
-        <p>DDD</p>
-        <small>
+        <p>{item.product.title}</p>
+        <small onClick={() => removeItem(item)}>
           <FiX />
         </small>
       </div>
       <div className="cart-item__image">
-        <img src="/assets/lumin-eg.png" alt="lumin" />
+        <img src={item.product.image_url} alt={item.title} />
       </div>
       <div className="cart-item__details">
         <div className="cart-item__details--actions">
-          <span>-</span>
-          <p>1</p>
-          <span>+</span>
+          <span className="pointer" onClick={() => decreaseQuantity(item)}>
+            -
+          </span>
+          <p>{item.quantity}</p>
+          <span className="pointer" onClick={() => increaseQuantity(item)}>
+            +
+          </span>
         </div>
-        <p>$29.00</p>
+        <p>
+          {new Intl.NumberFormat(`${currentCurrency}`, {
+            style: "currency",
+            currency: `${currentCurrency}`,
+          }).format(item.total)}
+        </p>
       </div>
     </div>
   );
